@@ -1,4 +1,4 @@
-# Round Robin Scheduling Algorithm 
+# Round Robin Scheduling 
 
 processes = ['P1', 'P2', 'P3', 'P4', 'P5']
 arrival_time = [0, 1, 2, 3, 4]
@@ -36,21 +36,21 @@ while done < n:
     rt[i] -= exec_time
     t += exec_time
 
-    # If process finished
+   
     if rt[i] == 0:
         ct[i] = t
         done += 1
     else:
-        # Requeue if not finished
+       
         ready_queue.append(i)
 
-    # Add any new arrivals during execution
+    
     for j in range(n):
         if arrival_time[j] <= t and not arrived[j]:
             ready_queue.append(j)
             arrived[j] = True
 
-# Calculate waiting time and turnaround time
+
 for i in range(n):
     tt[i] = ct[i] - arrival_time[i]
     wt[i] = tt[i] - burst_time[i]
